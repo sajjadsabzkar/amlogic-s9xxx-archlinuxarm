@@ -44,6 +44,20 @@ jobs:
         with:
           path: releases/ArchLinuxARM-aarch64-Amlogic-*
           if-no-files-found: error
+          
+      - name : Upload to releases
+        uses: ncipollo/release-action@main
+        if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
+        with:
+         artifacts: releases/ArchLinuxARM-aarch64-Amlogic-*
+         allowUpdates: true
+         removeArtifacts: false
+         replacesArtifacts: true
+         token: ${{ secrets.GH_TOKEN }}
+         body: |
+            ### Archlinux Image information
+            - Default username: alarm
+            - Default password: alarm_please_change_me
       - name: Report build versions
         run: cat releases/ArchLinuxARM-aarch64-Amlogic-*.md
 
