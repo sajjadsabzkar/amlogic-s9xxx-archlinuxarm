@@ -51,7 +51,7 @@ jobs:
         uses: ncipollo/release-action@main
         if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
         with:
-         tag: ${{ steps.compile.outputs.build_tag }}
+         tag: Armbian${{ env.PACKAGED_OUTPUTDATE }}
          artifacts: releases/ArchLinuxARM-aarch64-Amlogic-*
          allowUpdates: true
          removeArtifacts: false
