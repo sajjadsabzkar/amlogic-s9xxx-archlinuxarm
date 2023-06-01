@@ -33,6 +33,7 @@ jobs:
             sudo ln -sf ../../bin/distcc /usr/lib/distcc/aarch64-unknown-linux-gnu-${binary}
           done
       - name: Cross build
+        id : compile
         run: compressor=no ./cross.sh
       - name: Compress archives and images
         run: |
