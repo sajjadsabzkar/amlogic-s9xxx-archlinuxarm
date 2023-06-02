@@ -15,7 +15,7 @@ jobs:
       - name: Prepare packages
         id : init
         run: |
-          echo "::set-env name=NOW::$(date +'%Y-%m-%dT%H:%M:%S')"
+          echo "NOW=v$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
           sudo apt update
           sudo apt install \
             arch-install-scripts \
