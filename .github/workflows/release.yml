@@ -1,8 +1,8 @@
 name: Release nightly
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 2 * * *' # run at 2 AM UTC
+#  schedule:
+#    - cron: '0 2 * * *' # run at 2 AM UTC
 permissions:
   contents: write
 jobs:
