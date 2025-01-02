@@ -284,7 +284,8 @@ install_initramfs() {
 
 unhack_initramfs() {
     if [[ "${initramfs}" == 'booster' ]]; then
-        rm -f cache/root/etc/booster.yaml
+        printf '%s: %s\n' \
+            'universal' 'true' > cache/root/etc/booster.yaml
     else
         local mkinitcpio_conf=cache/root/etc/mkinitcpio.conf
         local mkinitcpio_install_hook=cache/root/usr/share/libalpm/hooks/90-mkinitcpio-install.hook
@@ -649,7 +650,7 @@ if [[ "${#install_pkgs_normal[@]}" == 0 ]]; then
 fi
 
 if [[ "${#install_pkgs_kernel[@]}" == 0 ]]; then
-    install_pkgs_kernel=(linux-aarch64-{flippy,7ji})
+    install_pkgs_kernel=(linux-aarch64-{flippy-git,7ji})
 fi
 
 if [[ -z "${uuid_root}" ]]; then
